@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">PicassoProject</string>
+    <string name="creator_name">Creator Name</string>
+    <string name="like_column">Like column</string>
 </resources>
