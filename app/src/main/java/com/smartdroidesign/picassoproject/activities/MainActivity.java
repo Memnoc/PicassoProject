@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity implements OnItemClickListen
     }
 
     private void parseJSON(){
-        String url = "https://pixabay.com/api/?key=8001831-46690e7614e6bfc84879663d2&q=kitten&image_type=photo&pretty=true";
+        String url = "https://pixabay.com/api/?key=8001831-46690e7614e6bfc84879663d2&q=yellow+flowers&image_type=photo&pretty=true";
 
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
             @Override
