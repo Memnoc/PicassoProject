@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import com.smartdroidesign.picassoproject.R;
 import com.smartdroidesign.picassoproject.holder.ImagesHolder;
 import com.smartdroidesign.picassoproject.model.ImagesInformation;
+import com.smartdroidesign.picassoproject.service.OnItemClickListener;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -21,6 +22,12 @@ public class ImagesAdapter extends RecyclerView.Adapter<ImagesHolder> {
 
     private Context mContext;
     private ArrayList<ImagesInformation> mImagesList;
+    private OnItemClickListener mListener;
+
+    public void setOnItemClickListener(OnItemClickListener listener){
+        mListener = listener;
+    }
+
 
     public ImagesAdapter(Context context, ArrayList<ImagesInformation> imagesList) {
         this.mContext = context;
@@ -31,7 +38,7 @@ public class ImagesAdapter extends RecyclerView.Adapter<ImagesHolder> {
     public ImagesHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(mContext)
                 .inflate(R.layout.card_item, parent, false);
-        return new ImagesHolder(v);
+        return new ImagesHolder(v, mListener);
     }
 
     @Override

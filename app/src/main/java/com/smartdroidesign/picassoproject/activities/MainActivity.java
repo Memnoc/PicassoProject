@@ -1,5 +1,6 @@
 package com.smartdroidesign.picassoproject.activities;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -14,6 +15,7 @@ import com.android.volley.toolbox.Volley;
 import com.smartdroidesign.picassoproject.R;
 import com.smartdroidesign.picassoproject.adapter.ImagesAdapter;
 import com.smartdroidesign.picassoproject.model.ImagesInformation;
+import com.smartdroidesign.picassoproject.service.OnItemClickListener;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -21,7 +23,11 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements OnItemClickListener {
+
+    public static final String EXTRA_URL = "imageUrl";
+    public static final String EXTRA_CREATOR = "creatorName";
+    public static final String EXTRA_LIKES = "likeCount";
 
     private RecyclerView mRecyclerView;
     private ImagesAdapter mImagesAdapter;
@@ -64,6 +70,7 @@ public class MainActivity extends AppCompatActivity {
 
                     mImagesAdapter = new ImagesAdapter(MainActivity.this, mImagesList);
                     mRecyclerView.setAdapter(mImagesAdapter);
+                    mImagesAdapter.setOnItemClickListener(MainActivity.this);
 
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -79,5 +86,17 @@ public class MainActivity extends AppCompatActivity {
         });
 
         mRequestQueue.add(request);
+    }
+
+    @Override
+    public void onItemClick(int position) {
+        Intent detailIntent = new Intent(this, DetailActivity.class);
+        ImagesInformation clickedItem = mImagesList.get(position);
+
+        detailIntent.putExtra(EXTRA_URL, clickedItem.getmImageUrl());
+        detailIntent.putExtra(EXTRA_CREATOR, clickedItem.getmCreator());
+        detailIntent.putExtra(EXTRA_LIKES, clickedItem.getmLikes());
+
+        startActivity(detailIntent);
     }
 }
