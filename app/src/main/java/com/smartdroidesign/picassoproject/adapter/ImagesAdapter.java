@@ -51,7 +51,7 @@ public class ImagesAdapter extends RecyclerView.Adapter<ImagesHolder> {
 
         holder.mTextViewCreator.setText(creatorName);
         holder.mTextViewLikes.setText("Likes: " + likeCount);
-        Picasso.with(mContext).load(imageUrl).fit().centerInside().into(holder.mImageView);
+        Picasso.with(mContext).load(imageUrl).fit().centerCrop().into(holder.mImageView);
 
     }
 
