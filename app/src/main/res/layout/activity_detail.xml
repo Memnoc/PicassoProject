@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:id="@+id/myLayout"
     tools:context="com.smartdroidesign.picassoproject.activities.DetailActivity">
 
     <ImageView
@@ -31,5 +32,11 @@
         android:textSize="30sp"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"/>
+
+    <Button
+        android:id="@+id/setWallpaperBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="SetWallpaper" />
 
 </LinearLayout>
